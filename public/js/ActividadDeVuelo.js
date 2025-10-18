@@ -14,27 +14,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const desde = document.getElementById('desde');
   const hasta = document.getElementById('hasta');
 
-  // Crear datalist para autocompletado
-  const listaAerodromos = document.createElement('datalist');
-  listaAerodromos.id = 'listaAerodromos';
-  document.body.appendChild(listaAerodromos);
-  desde.setAttribute('list', 'listaAerodromos');
-  hasta.setAttribute('list', 'listaAerodromos');
-
-  // Poblar aeródromos en datalist
+  // Poblar aeródromos agrupados por provincia
   fetch('/api/aerodromos')
     .then(res => res.json())
     .then(data => {
-      data.forEach(a => {
-        const label = a.oaci ? `${a.denominacion} (${a.oaci})` : a.denominacion;
-        const option = document.createElement('option');
-        option.value = label;
-        listaAerodromos.appendChild(option);
-      });
+      const agrupados = agruparPorProvincia(data);
+      poblarSelector(desde, agrupados);
+      poblarSelector(hasta, agrupados);
     })
     .catch(err => {
-      console.error('Error al cargar aeródromos:', err);
+      console.error('❌ Error al cargar aeródromos:', err);
     });
+
+  function agruparPorProvincia(lista) {
+    const mapa = {};
+    lista.forEach(a => {
+      if (!mapa[a.provincia]) mapa[a.provincia] = [];
+      mapa[a.provincia].push(a);
+    });
+    return mapa;
+  }
+
+  function poblarSelector(select, agrupados) {
+    select.innerHTML = '';
+
+    const inicial = document.createElement('option');
+    inicial.value = '';
+    inicial.textContent = 'Seleccionar aeródromo';
+    inicial.disabled = true;
+    inicial.selected = true;
+    select.appendChild(inicial);
+
+    Object.keys(agrupados).sort().forEach(provincia => {
+      const grupo = document.createElement('optgroup');
+      grupo.label = provincia;
+
+      agrupados[provincia].forEach(a => {
+        const opcion = document.createElement('option');
+        opcion.value = a.local;
+        opcion.textContent = `${a.local} - ${a.denominacion}`;
+        grupo.appendChild(opcion);
+      });
+
+      select.appendChild(grupo);
+    });
+  }
 
   // Mostrar instructor y costo instrucción si corresponde
   tipoVuelo.addEventListener('change', () => {

@@ -13,10 +13,10 @@ const aerodromosRoutes = require('./routes/aerodromos');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public')); // si usás frontend desde /public
-
 // Rutas de aeródromos (desde MySQL)
 app.use('/api/aerodromos', aerodromosRoutes);
+
+app.use(express.static('public')); // si usás frontend desde /public
 
 // Base de datos temporal en memoria para socios
 let socios = []; // Se borra al reiniciar el servidor
