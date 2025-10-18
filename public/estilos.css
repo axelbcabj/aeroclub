@@ -1,0 +1,110 @@
+/* Navbar azul con letras blancas */
+.navbar {
+  background-color: #0d6efd;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 500;
+  padding: 12px 0;
+  transition: background-color 0.3s ease;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.navbar .nav-link:last-child {
+  border-right: none;
+}
+
+.navbar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Calendario con borde visible */
+#calendar {
+  background-color: #fff;
+  border: 2px solid #0d6efd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.2);
+}
+
+/* Eventos del calendario */
+.fc-event {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.85rem;
+}
+
+/* Botón de reserva */
+.btn-success {
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+/* Modales */
+.modal-header {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+}
+
+/* Modal de detalle */
+#modalDetalle .modal-body p {
+  margin-bottom: 8px;
+}
+
+/* Formulario de reserva */
+.form-label {
+  font-weight: 500;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+/* Borde azul en cada celda del calendario */
+.fc-daygrid-day {
+  border: 1px solid #0d6efd !important;
+}
+
+/* El contenedor de cada día */
+.fc-daygrid-day-frame {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 4px;
+  
+}
+
+/* El contenedor general del calendario */
+#calendar {
+  border: 2px solid #0d6efd;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.2);
+}
+/* Estilo del dropdown de Socios */
+.navbar .dropdown-menu {
+  background-color: #0d6efd; /* azul institucional */
+  border: none;
+  border-radius: 0;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 16px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}

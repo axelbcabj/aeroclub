@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar Socio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="stilosocio.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <h2>Agregar Socio</h2>
+    <form id="formAgregarSocio">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="nacionalidad" class="form-label">Nacionalidad</label>
+          <select class="form-select" id="nacionalidad" required>
+            <option value="" disabled selected>Seleccionar país</option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+          <input type="date" class="form-control" id="fechaNacimiento" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="dni" class="form-label">DNI</label>
+          <input type="text" class="form-control" id="dni" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="numeroSocio" class="form-label">Número de Socio</label>
+          <input type="text" class="form-control" id="numeroSocio" readonly>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="provincia" class="form-label">Provincia</label>
+          <select class="form-select" id="provincia" required>
+            <option value="" disabled selected>Seleccionar provincia</option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="localidad" class="form-label">Localidad</label>
+          <select class="form-select" id="localidad" required>
+            <option value="" disabled selected>Seleccionar localidad</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="domicilio" class="form-label">Domicilio</label>
+        <input type="text" class="form-control" id="domicilio" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="domicilioCobro" class="form-label">Domicilio de cobro / Forma de pago</label>
+        <input type="text" class="form-control" id="domicilioCobro" required>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="celular" class="form-label">Celular</label>
+          <input type="tel" class="form-control" id="celular" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="fechaAlta" class="form-label">Fecha de Alta</label>
+        <input type="date" class="form-control" id="fechaAlta" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Agregar Socio</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!-- Script de socios -->
+  <script src="./js/Socios.js" defer></script>
+</body>
+</html>

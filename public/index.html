@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aeroclub San Justo</title>
+  <link rel="stylesheet" href="estilos.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
+  <style>
+    .fc-daygrid-day-frame {
+      min-height: 140px !important;
+    }
+    .fc-daygrid-event {
+      font-size: 0.9rem;
+      padding: 2px 4px;
+      margin-bottom: 4px;
+    }
+    #calendar {
+      min-height: 800px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Modal de Login -->
+ <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="loginForm">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="usuario" class="form-control mb-3" placeholder="Usuario" required>
+          <input type="password" id="contraseña" class="form-control mb-3" placeholder="Contraseña" required>
+          <div id="loginError" class="text-danger d-none">Usuario o contraseña incorrectos</div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Ingresar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <!-- Contenido privado -->
+  <div id="contenidoPrivado" style="display: none;">
+    <div class="container mt-4">
+      <h1>Aeroclub San Justo</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #0d6efd;">
+  <div class="container-fluid">
+    <div class="d-flex w-100">
+      <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="actividadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Actividades
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="actividadesDropdown">
+    <li><a class="dropdown-item" href="nuevaActividadVuelo.html">Nueva actividad de vuelo</a></li>
+    <li><a class="dropdown-item" href="ravPilotos.html">RAV Pilotos</a></li>
+  </ul>
+</li>
+      <a class="nav-link flex-fill text-center text-white" href="#">Aviones</a>
+      <a class="nav-link flex-fill text-center text-white" href="Pilotos.html">Pilotos</a>
+      <div class="nav-item dropdown flex-fill text-center">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="sociosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Socios
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="sociosDropdown">
+    <li><a class="dropdown-item" href="agregarSocio.html">Agregar socio</a></li>
+    <li><a class="dropdown-item" href="CuentaCorrienteSocio.html">Cuenta Corriente Socio</a></li>
+    <li><a class="dropdown-item" href="cuotaMensual.html">Generar cuota mensual</a></li>
+    <li><a class="dropdown-item" href="cuotaAnual.html">Generar cuota anual</a></li>
+    <li><a class="dropdown-item" href="listaSocios.html">Lista de socios</a></li>
+  </ul>
+</div>
+
+
+      <a class="nav-link flex-fill text-center text-white" href="#">Salón</a>
+      <a class="nav-link flex-fill text-center text-white" href="#">Movimientos</a>
+      <a class="nav-link flex-fill text-center text-white" href="#">Tanque Combustible</a>
+      <a class="nav-link flex-fill text-center text-white" href="#">Comisión Directiva</a>
+    </div>
+  </div>
+</nav>
+
+    <div class="container mt-4">
+      <div class="text-center mb-3">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservaModal">
+          Reserva de Aeronave
+        </button>
+      </div>
+      <div id="calendar"></div>
+    </div>
+  </div>
+
+  <!-- Modal de selección de aeronave -->
+  <div class="modal fade" id="reservaModal" tabindex="-1" aria-labelledby="reservaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="reservaModalLabel">Seleccionar Aeronave</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p>Elegí una aeronave para reservar:</p>
+          <div class="d-grid gap-3">
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#formANX" data-bs-dismiss="modal">LV-ANX</button>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#formLXZ" data-bs-dismiss="modal">LV-LXZ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal LV-ANX -->
+  <div class="modal fade" id="formANX" tabindex="-1" aria-labelledby="formANXLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="reservaANX">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="formANXLabel">Reserva - LV-ANX</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Tipo de vuelo</label>
+              <select class="form-select">
+                <option value="" disabled selected>Seleccionar tipo</option>
+                <option value="Entrenamiento">Entrenamiento</option>
+                <option value="Navegación">Navegación</option>
+                <option value="Readaptación">Readaptación</option>
+                <option value="Instrucción">Instrucción</option>
+              </select>
+            </div>
+            <div class="mb-3"><label class="form-label">Instructor</label><select class="form-select instructor"></select></div>
+            <div class="mb-3"><label class="form-label">Piloto</label><select class="form-select piloto"></select></div>
+            <div class="mb-3"><label class="form-label">Fecha</label><input type="date" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Hora Inicio</label><input type="time" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Hora Final</label><input type="time" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Observaciones</label><textarea class="form-control" rows="3"></textarea></div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Confirmar Reserva</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal LV-LXZ -->
+  <div class="modal fade" id="formLXZ" tabindex="-1" aria-labelledby="formLXZLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="reservaLXZ">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="formLXZLabel">Reserva - LV-LXZ</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Tipo de vuelo</label>
+              <select class="form-select">
+                <option value="" disabled selected>Seleccionar tipo</option>
+                <option value="Entrenamiento">Entrenamiento</option>
+                <option value="Navegación">Navegación</option>
+                <option value="Readaptación">Readaptación</option>
+                <option value="Instrucción">Instrucción</option>
+              </select>
+            </div>
+            <div class="mb-3"><label class="form-label">Instructor</label><select class="form-select instructor"></select></div>
+            <div class="mb-3"><label class="form-label">Piloto</label><select class="form-select piloto"></select></div>
+            <div class="mb-3"><label class="form-label">Fecha</label><input type="date" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Hora Inicio</label><input type="time" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Hora Final</label><input type="time" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Observaciones</label><textarea class="form-control" rows="3"></textarea></div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Confirmar Reserva</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de detalle de reserva -->
+  <div class="modal fade" id="modalDetalle" tabindex="-1" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title" id="modalDetalleLabel">Detalle de Reserva</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Aeronave / Tipo de vuelo:</strong> <span id="detalleTitulo"></span></p>
+          <p><strong>Fecha y hora:</strong> <span id="detalleFecha"></span></p>
+          <p><strong>Piloto:</strong> <span id="detallePiloto"></span></p>
+          <p><strong>Instructor:</strong> <span id="detalleInstructor"></span></p>
+          <p><strong>Observaciones:</strong> <span id="detalleObservaciones"></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="./js/Main.js" defer></script>
+</body>
+</html>

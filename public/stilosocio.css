@@ -1,0 +1,8 @@
+:root {
+  --color-principal: #0d6efd;
+}
+
+#formAgregarSocio .form-control,
+#formAgregarSocio .form-select {
+  border: 2px solid var(--color-principal);
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nueva actividad de vuelo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="estilosVuelo.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container mt-4">
+    <h2 class="mb-4 text-center">Registrar nueva actividad de vuelo</h2>
+    <form id="formActividadVuelo">
+      <!-- Piloto -->
+      <div class="mb-3">
+        <label for="piloto" class="form-label">Piloto</label>
+        <select id="piloto" class="form-select" required></select>
+      </div>
+
+      <!-- Tipo de vuelo -->
+      <div class="mb-3">
+        <label for="tipoVuelo" class="form-label">Tipo de vuelo</label>
+        <select id="tipoVuelo" class="form-select" required>
+          <option value="" disabled selected>Seleccionar tipo</option>
+          <option value="Entrenamiento">Entrenamiento</option>
+          <option value="Navegación">Navegación</option>
+          <option value="Instrucción">Instrucción</option>
+          <option value="Readaptación">Readaptación</option>
+          <option value="Traslado Taller">Traslado Taller</option>
+        </select>
+      </div>
+
+      <!-- Instructor -->
+      <div class="mb-3" id="instructorGroup" style="display: none;">
+        <label for="instructor" class="form-label">Instructor</label>
+        <select id="instructor" class="form-select"></select>
+      </div>
+
+      <!-- Fecha -->
+      <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" id="fecha" class="form-control" required />
+      </div>
+
+      <!-- Hora inicio / final -->
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="horaInicio" class="form-label">Hora inicio</label>
+          <input type="time" id="horaInicio" class="form-control" required />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="horaFin" class="form-label">Hora final</label>
+          <input type="time" id="horaFin" class="form-control" required />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tiempo de vuelo (hs)</label>
+        <input type="number" id="tiempoVuelo" class="form-control" readonly />
+      </div>
+
+      <!-- Tacómetro -->
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Tacómetro inicio</label>
+          <input type="number" id="tacometroInicio" class="form-control" readonly />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Tacómetro final</label>
+          <input type="number" id="tacometroFin" class="form-control" required />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Horas por tacómetro</label>
+        <input type="number" id="horasTacometro" class="form-control" readonly />
+      </div>
+
+      <!-- Desde / Hasta -->
+      <!-- Desde / Hasta con datalist -->
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <label for="desde" class="form-label">Desde</label>
+    <input type="text" id="desde" class="form-control" list="listaAerodromos" required />
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="hasta" class="form-label">Hasta</label>
+    <input type="text" id="hasta" class="form-control" list="listaAerodromos" required />
+  </div>
+</div>
+
+<!-- Datalist compartido -->
+<datalist id="listaAerodromos"></datalist>
+
+      <!-- Aterrizajes / Carga -->
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Aterrizajes</label>
+          <input type="number" id="aterrizajes" class="form-control" required />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Carga combustible (L)</label>
+          <input type="number" id="combustible" class="form-control" required />
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Carga aceite (L)</label>
+          <input type="number" id="aceite" class="form-control" required />
+        </div>
+      </div>
+
+      <!-- Cobranza -->
+      <div class="mb-3">
+        <label class="form-label">Cobranza</label>
+        <select id="cobranza" class="form-select" required>
+          <option value="" disabled selected>Seleccionar método</option>
+          <option value="Hora">Hora de vuelo</option>
+          <option value="Tacometro">Tacómetro</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Costo vuelo ($)</label>
+        <input type="number" id="costoVuelo" class="form-control" readonly />
+      </div>
+
+      <!-- Costo instrucción -->
+      <div class="mb-3" id="costoInstruccionGroup" style="display: none;">
+        <label class="form-label">Costo de instrucción ($)</label>
+        <input type="number" id="costoInstruccion" class="form-control" readonly />
+      </div>
+
+      <button type="submit" class="btn btn-success">Registrar actividad</button>
+    </form>
+  </div>
+
+  <script src="./js/ActividadDeVuelo.js"></script>
+</body>
+</html>
