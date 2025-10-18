@@ -12,13 +12,13 @@
     <h2 class="mb-4 text-center">Registrar nueva actividad de vuelo</h2>
     <form id="formActividadVuelo">
       <!-- Piloto -->
-      <div class="mb-3">
+      <div class="mb-3" >
         <label for="piloto" class="form-label">Piloto</label>
         <select id="piloto" class="form-select" required></select>
       </div>
 
       <!-- Tipo de vuelo -->
-      <div class="mb-3">
+      <div class="mb-3" >
         <label for="tipoVuelo" class="form-label">Tipo de vuelo</label>
         <select id="tipoVuelo" class="form-select" required>
           <option value="" disabled selected>Seleccionar tipo</option>
@@ -75,12 +75,19 @@
       </div>
 
       <!-- Desde / Hasta -->
-       <label for="desde">Desde:</label>
-<select id="desde" name="desde"></select>
+       <div class="form-group">
+          <label for="desde">Desde:</label>
+          <select id="desde" name="desde">
+          <option value="" disabled selected>Seleccionar aeródromo</option>
+        </select>
+       </div>
 
-<label for="hasta">Hasta:</label>
-<select id="hasta" name="hasta"></select>
-     
+      <div class="form-group">
+            <label for="hasta">Hasta:</label>
+           <select id="hasta" name="hasta">
+             <option value="" disabled selected>Seleccionar aeródromo</option>
+           </select>
+      </div>
       <!-- Aterrizajes / Carga -->
       <div class="row">
         <div class="col-md-4 mb-3">
@@ -99,7 +106,7 @@
 
       <!-- Cobranza -->
       <div class="mb-3">
-        <label class="form-label">Cobranza</label>
+        <label class="form-label" >Cobranza</label>
         <select id="cobranza" class="form-select" required>
           <option value="" disabled selected>Seleccionar método</option>
           <option value="Hora">Hora de vuelo</option>

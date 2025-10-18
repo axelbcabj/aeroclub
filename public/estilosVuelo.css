@@ -13,3 +13,63 @@ label {
 input[readonly] {
   background-color: #e9ecef;
 }
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+select {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+/* Aplica a todos los campos comunes */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="time"],
+input[type="tel"],
+input[type="url"],
+select,
+textarea {
+  border: 2px solid #007BFF; /* azul */
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 1rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto al enfocar */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0056b3; /* azul más oscuro */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+#piloto {
+  border-color: #0056b3; /* azul más oscuro */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+#tipoVuelo {
+  border-color: #0056b3; /* azul más oscuro */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+#cobranza {
+  border-color: #0056b3; /* azul más oscuro */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
