@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Compra y Venta Combustible</title>
+  <link rel="stylesheet" href="css/compraVentaCombustible.css">
+<!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <style>
+    .fc-daygrid-day-frame {
+      min-height: 140px !important;
+    }
+    .fc-daygrid-event {
+      font-size: 0.9rem;
+      padding: 2px 4px;
+      margin-bottom: 4px;
+    }
+    #calendar {
+      min-height: 800px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenido privado -->
+  <div id="contenidoPrivado">
+    <div class="container mt-4">
+      <h1>Aeroclub San Justo</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #0d6efd;">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav w-100 d-flex flex-row justify-content-between">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="actividadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Actividades
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="actividadesDropdown">
+            <li><a class="dropdown-item" href="nuevaActividadVuelo.html">Nueva actividad de vuelo</a></li>
+            <li><a class="dropdown-item" href="ravPilotos.html">RAV Pilotos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Aviones</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Pilotos.html">Pilotos</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="sociosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Socios
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sociosDropdown">
+            <li><a class="dropdown-item" href="agregarSocio.html">Agregar socio</a></li>
+            <li><a class="dropdown-item" href="CuentaCorrienteSocio.html">Cuenta Corriente Socio</a></li>
+            <li><a class="dropdown-item" href="cuotaMensual.html">Generar cuota mensual</a></li>
+            <li><a class="dropdown-item" href="cuotaAnual.html">Generar cuota anual</a></li>
+            <li><a class="dropdown-item" href="listaSocios.html">Lista de socios</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link text-white" href="salon.html">Salón</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Movimientos</a></li>
+        <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="tanqueDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Tanque Combustible y Aceite
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="tanqueDropdown">
+    <li><a class="dropdown-item" href="stockCombustible.html">Stock Combustible</a></li>
+    <li><a class="dropdown-item" href="compraVentaCombustible.html">Compra y Venta Combustible</a></li>
+    <li><a class="dropdown-item" href="stockAceite.html">Stock Aceite</a></li>
+    <li><a class="dropdown-item" href="compraAceite.html">Compra Aceite</a></li>
+  </ul>
+</li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Comisión Directiva</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="container mt-4">
+    <h2 class="mb-4">Compra y Venta de Combustible</h2>
+    <div class="alert alert-info">
+  <strong>Litros disponibles en el tanque:</strong> <span id="stockResumen">1200</span> L
+</div>
+    <!-- Formulario de Compra -->
+    <div class="card mb-4">
+      <div class="card-header bg-success text-white">Registrar Compra</div>
+      <div class="card-body">
+        <form id="formCompra">
+          <div class="mb-3">
+            <label for="litrosCompra" class="form-label">Litros comprados</label>
+            <input type="number" class="form-control" id="litrosCompra" min="1" required>
+          </div>
+          <div class="mb-3">
+            <label for="precioCompra" class="form-label">Precio por litro</label>
+            <input type="number" class="form-control" id="precioCompra" min="0" step="0.01" required>
+          </div>
+          <div class="mb-3">
+            <label for="totalCompra" class="form-label">Total a pagar</label>
+            <input type="number" class="form-control" id="totalCompra" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="metodoPago" class="form-label">Método de pago</label>
+            <select class="form-select" id="metodoPago" required>
+              <option value="">Seleccionar</option>
+              <option value="Transferencia">Transferencia</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="Cheque">Cheque</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="fechaCompra" class="form-label">Fecha</label>
+            <input type="date" class="form-control" id="fechaCompra" required>
+          </div>
+          <button type="submit" class="btn btn-success">Registrar compra</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Formulario de Venta -->
+    <div class="card mb-4">
+      <div class="card-header bg-danger text-white">Registrar Venta</div>
+      <div class="card-body">
+        <form id="formVenta">
+          <div class="mb-3">
+            <label for="litrosVenta" class="form-label">Litros vendidos</label>
+            <input type="number" class="form-control" id="litrosVenta" min="1" required>
+          </div>
+          <div class="mb-3">
+            <label for="precioVenta" class="form-label">Precio por litro</label>
+            <input type="number" class="form-control" id="precioVenta" min="0" step="0.01" required>
+          </div>
+          <div class="mb-3">
+            <label for="totalVenta" class="form-label">Total a cobrar</label>
+            <input type="number" class="form-control" id="totalVenta" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="metodoCobro" class="form-label">Método de cobro</label>
+            <select class="form-select" id="metodoCobro" required>
+              <option value="">Seleccionar</option>
+              <option value="Transferencia">Transferencia</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="Cheque">Cheque</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="fechaVenta" class="form-label">Fecha</label>
+            <input type="date" class="form-control" id="fechaVenta" required>
+          </div>
+           <div class="mb-3">
+  <label for="aeronaveVenta" class="form-label">Aeronave</label>
+  <input type="text" class="form-control" id="aeronaveVenta" placeholder="Ej: LV-ABC" required>
+</div>
+          </div>
+          <div class="mb-3">
+            <label for="nombreVendedor" class="form-label">Nombre vendedor</label>
+            <input type="text" class="form-control" id="nombreVendedor" required>
+          </div>
+          <button type="submit" class="btn btn-danger">Registrar venta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="js/compraVentaCombustible.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

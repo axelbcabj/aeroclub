@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Stock de Aceite</title>
+  <link rel="stylesheet" href="css/stockAceite.css">
+<!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <style>
+    .fc-daygrid-day-frame {
+      min-height: 140px !important;
+    }
+    .fc-daygrid-event {
+      font-size: 0.9rem;
+      padding: 2px 4px;
+      margin-bottom: 4px;
+    }
+    #calendar {
+      min-height: 800px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenido privado -->
+  <div id="contenidoPrivado">
+    <div class="container mt-4">
+      <h1>Aeroclub San Justo</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #0d6efd;">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav w-100 d-flex flex-row justify-content-between">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="actividadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Actividades
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="actividadesDropdown">
+            <li><a class="dropdown-item" href="nuevaActividadVuelo.html">Nueva actividad de vuelo</a></li>
+            <li><a class="dropdown-item" href="ravPilotos.html">RAV Pilotos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Aviones</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Pilotos.html">Pilotos</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="sociosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Socios
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sociosDropdown">
+            <li><a class="dropdown-item" href="agregarSocio.html">Agregar socio</a></li>
+            <li><a class="dropdown-item" href="CuentaCorrienteSocio.html">Cuenta Corriente Socio</a></li>
+            <li><a class="dropdown-item" href="cuotaMensual.html">Generar cuota mensual</a></li>
+            <li><a class="dropdown-item" href="cuotaAnual.html">Generar cuota anual</a></li>
+            <li><a class="dropdown-item" href="listaSocios.html">Lista de socios</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link text-white" href="salon.html">Salón</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Movimientos</a></li>
+        <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="tanqueDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Tanque Combustible y Aceite
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="tanqueDropdown">
+    <li><a class="dropdown-item" href="stockCombustible.html">Stock Combustible</a></li>
+    <li><a class="dropdown-item" href="compraVentaCombustible.html">Compra y Venta Combustible</a></li>
+    <li><a class="dropdown-item" href="stockAceite.html">Stock Aceite</a></li>
+    <li><a class="dropdown-item" href="compraAceite.html">Compra Aceite</a></li>
+  </ul>
+</li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Comisión Directiva</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4">
+    <h2 class="mb-3">Stock de Aceite</h2>
+
+    <!--  Visualización del stock -->
+    <div class="alert alert-warning">
+      <strong>Litros disponibles de aceite:</strong> <span id="stockAceitePrincipal">6</span> L
+    </div>
+
+    <!-- Formulario de carga de aceite -->
+    <form id="formCargaAceite">
+      <div class="mb-3">
+        <label for="nombreAceite" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombreAceite" required>
+      </div>
+      <div class="mb-3">
+        <label for="fechaAceite" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="fechaAceite" required>
+      </div>
+      <div class="mb-3">
+        <label for="litrosAceite" class="form-label">Litros cargados</label>
+        <input type="number" class="form-control" id="litrosAceite" min="1" required>
+      </div>
+      <div class="mb-3">
+        <label for="aeronave" class="form-label">Aeronave</label>
+        <select class="form-select" id="aeronave" required>
+          <option value="">Seleccionar</option>
+          <option value="LV-ANX">LV-ANX</option>
+          <option value="LV-LXZ">LV-LXZ</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning">Registrar carga</button>
+    </form>
+  </div>
+  <script src="js/stockAceite.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

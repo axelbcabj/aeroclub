@@ -57,36 +57,46 @@
 
     <nav class="navbar navbar-expand-lg" style="background-color: #0d6efd;">
   <div class="container-fluid">
-    <div class="d-flex w-100">
-      <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle text-white" href="#" id="actividadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Actividades
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav w-100 d-flex flex-row justify-content-between">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="actividadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Actividades
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="actividadesDropdown">
+            <li><a class="dropdown-item" href="nuevaActividadVuelo.html">Nueva actividad de vuelo</a></li>
+            <li><a class="dropdown-item" href="ravPilotos.html">RAV Pilotos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Aviones</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Pilotos.html">Pilotos</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="sociosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Socios
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sociosDropdown">
+            <li><a class="dropdown-item" href="agregarSocio.html">Agregar socio</a></li>
+            <li><a class="dropdown-item" href="CuentaCorrienteSocio.html">Cuenta Corriente Socio</a></li>
+            <li><a class="dropdown-item" href="cuotaMensual.html">Generar cuota mensual</a></li>
+            <li><a class="dropdown-item" href="cuotaAnual.html">Generar cuota anual</a></li>
+            <li><a class="dropdown-item" href="listaSocios.html">Lista de socios</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link text-white" href="salon.html">Salón</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Movimientos</a></li>
+        <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="tanqueDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Tanque Combustible y Aceite
   </a>
-  <ul class="dropdown-menu" aria-labelledby="actividadesDropdown">
-    <li><a class="dropdown-item" href="nuevaActividadVuelo.html">Nueva actividad de vuelo</a></li>
-    <li><a class="dropdown-item" href="ravPilotos.html">RAV Pilotos</a></li>
+  <ul class="dropdown-menu" aria-labelledby="tanqueDropdown">
+    <li><a class="dropdown-item" href="stockCombustible.html">Stock Combustible</a></li>
+    <li><a class="dropdown-item" href="compraVentaCombustible.html">Compra y Venta Combustible</a></li>
+    <li><a class="dropdown-item" href="stockAceite.html">Stock Aceite</a></li>
+    <li><a class="dropdown-item" href="compraAceite.html">Compra Aceite</a></li>
   </ul>
 </li>
-      <a class="nav-link flex-fill text-center text-white" href="#">Aviones</a>
-      <a class="nav-link flex-fill text-center text-white" href="Pilotos.html">Pilotos</a>
-      <div class="nav-item dropdown flex-fill text-center">
-  <a class="nav-link dropdown-toggle text-white" href="#" id="sociosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Socios
-  </a>
-  <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="sociosDropdown">
-    <li><a class="dropdown-item" href="agregarSocio.html">Agregar socio</a></li>
-    <li><a class="dropdown-item" href="CuentaCorrienteSocio.html">Cuenta Corriente Socio</a></li>
-    <li><a class="dropdown-item" href="cuotaMensual.html">Generar cuota mensual</a></li>
-    <li><a class="dropdown-item" href="cuotaAnual.html">Generar cuota anual</a></li>
-    <li><a class="dropdown-item" href="listaSocios.html">Lista de socios</a></li>
-  </ul>
-</div>
-
-
-      <a class="nav-link flex-fill text-center text-white" href="salon.html">Salón</a>
-      <a class="nav-link flex-fill text-center text-white" href="#">Movimientos</a>
-      <a class="nav-link flex-fill text-center text-white" href="#">Tanque Combustible</a>
-      <a class="nav-link flex-fill text-center text-white" href="#">Comisión Directiva</a>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Comisión Directiva</a></li>
+      </ul>
     </div>
   </div>
 </nav>
@@ -97,6 +107,16 @@
           Reserva de Aeronave
         </button>
       </div>
+      <!--  Visualización del stock combustible -->
+      <div class="alert alert-info">
+  <strong>Litros disponibles en el tanque:</strong> <span id="stockInicio">1200</span> L
+</div>
+
+    <!--  Visualización del stock aceite -->
+    <div class="alert alert-warning">
+      <strong>Litros disponibles de aceite:</strong> <span id="stockAceiteInicio">6</span> L
+    </div>
+
       <div id="calendar"></div>
     </div>
   </div>

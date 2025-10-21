@@ -1,0 +1,40 @@
+/* Navbar azul con letras blancas */
+.navbar {
+  background-color: #0d6efd;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 500;
+  padding: 12px 0;
+  transition: background-color 0.3s ease;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.navbar .nav-link:last-child {
+  border-right: none;
+}
+
+.navbar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.navbar .dropdown-menu {
+  background-color: #0d6efd; /* azul institucional */
+  border: none;
+  border-radius: 0;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 16px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
