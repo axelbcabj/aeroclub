@@ -1,0 +1,35 @@
+/* Navbar azul con letras blancas */
+.navbar {
+  background-color: #0d6efd;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 500;
+  padding: 12px 0;
+  transition: background-color 0.3s ease;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.navbar .nav-link:last-child {
+  border-right: none;
+}
+
+.navbar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+body {
+  padding: 20px;
+}
+
+#calendar {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+}

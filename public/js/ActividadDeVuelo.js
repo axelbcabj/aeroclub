@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       poblarSelector(hasta, agrupados);
     })
     .catch(err => {
-      console.error('❌ Error al cargar aeródromos:', err);
+      console.error('Error al cargar aeródromos:', err);
     });
 
   function agruparPorProvincia(lista) {
@@ -148,12 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const data = await res.json();
-      alert('✅ Actividad registrada correctamente');
+      alert('Actividad registrada correctamente');
       e.target.reset();
       instructorGroup.style.display = 'none';
       costoInstruccionGroup.style.display = 'none';
     } catch (err) {
-      alert('❌ Error al registrar actividad');
+      alert('Error al registrar actividad');
       console.error(err);
     }
   });
