@@ -5,7 +5,6 @@ window.addEventListener('DOMContentLoaded', function () {
   const numeroSocioInput = document.getElementById('numeroSocio');
   const form = document.getElementById('formAgregarSocio');
 
-  // Verificación de existencia
   if (!nacionalidadSelect || !provinciaSelect || !localidadSelect || !numeroSocioInput || !form) {
     console.error('Uno o más elementos del formulario no se encontraron.');
     return;
@@ -23,15 +22,13 @@ window.addEventListener('DOMContentLoaded', function () {
   // Cargar provincias y localidades desde JSON externo
   let provincias = {};
 
-  fetch('./js/data/provincias.json')
+  fetch('/data/provincias.json')
     .then(res => {
       if (!res.ok) throw new Error('No se pudo cargar el archivo JSON');
       return res.json();
     })
     .then(data => {
       provincias = data;
-      console.log('Provincias cargadas:', Object.keys(provincias));
-
       Object.keys(provincias).forEach(prov => {
         const option = document.createElement('option');
         option.value = prov;
@@ -54,19 +51,22 @@ window.addEventListener('DOMContentLoaded', function () {
     })
     .catch(err => console.error('Error al cargar provincias:', err));
 
-  // Número de socio automático
- function asignarNumeroSocio() {
-  fetch('http://localhost:3000/api/socios/cantidad')
-    .then(res => res.json())
-    .then(data => {
-      numeroSocioInput.value = data.cantidad + 1;
-    })
-    .catch(err => {
-      console.error('Error al obtener cantidad de socios:', err);
-      numeroSocioInput.value = 1; // fallback
-    });
-}
-  // Guardar socio
+  // Número de socio automático desde backend
+  function asignarNumeroSocio() {
+    fetch('http://localhost:3000/api/socios/cantidad')
+      .then(res => res.json())
+      .then(data => {
+        numeroSocioInput.value = data.cantidad + 1;
+      })
+      .catch(err => {
+        console.error('Error al obtener cantidad de socios:', err);
+        numeroSocioInput.value = 1;
+      });
+  }
+
+  asignarNumeroSocio();
+
+  // Guardar socio en MySQL
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -86,12 +86,23 @@ window.addEventListener('DOMContentLoaded', function () {
       fechaAlta: document.getElementById('fechaAlta').value
     };
 
-    let socios = JSON.parse(localStorage.getItem('socios')) || [];
-    socios.push(nuevoSocio);
-    localStorage.setItem('socios', JSON.stringify(socios));
-
-    alert('Socio agregado correctamente');
-    form.reset();
-    asignarNumeroSocio();
+    fetch('http://localhost:3000/api/socios', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(nuevoSocio)
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Error al guardar socio');
+      return res.json();
+    })
+    .then(data => {
+      alert(data.mensaje || 'Socio guardado correctamente');
+      form.reset();
+      asignarNumeroSocio();
+    })
+    .catch(err => {
+      console.error('Error al enviar socio:', err);
+      alert('Hubo un error al guardar el socio');
+    });
   });
 });
